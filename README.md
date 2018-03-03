@@ -1,1 +1,1 @@
-# Team-Beards
+# Team-Beards - Group Project 1
