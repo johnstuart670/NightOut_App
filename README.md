@@ -8,12 +8,12 @@
 	Kevin Smith
 ---
 ## APIs Used
-	Google Locations: [https://developers.google.com/places/]
+	[Google Locations:] (https://developers.google.com/places/)
 			API Key: AIzaSyCuqtmYRp2PRxve9eVhJ3u1D1Ohxr5V81Y
 
-	Walkability Index: [https://catalog.data.gov/dataset/walkability-index]
+	[Walkability Index:] (https://catalog.data.gov/dataset/walkability-index)
 
-	Walk Score: [https://www.walkscore.com/professional/api.php]
+	[Walk Score:] (https://www.walkscore.com/professional/api.php)
 ---
 ## Breakdown of Tasks
 
@@ -25,4 +25,3 @@
 	Locate Activities Nearby
 ###
 ###
-	
