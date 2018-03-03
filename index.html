@@ -9,13 +9,50 @@
 	<script src="./assets/js/jquery-3.3.1.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	
-	<title>Document</title>
+	<title>Plan Your Night Out</title>
 </head>
 <body>
 	<nav></nav>
-	<main class="container-fluid"></main>
+	<main class="container-fluid">
+			<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#startPop">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="startPop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTital">Get Started Planning Your Night Out!</h5>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+					<div class="input-group input-group-lg">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroup-sizing-lg">Location</span>
+						</div>
+						<input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="location">
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" id="bar" value="option1">
+						<label class="form-check-label" for="bar">Bars</label>
+					</div>
+					<div class="form-check form-check-inline" align="center">
+						<input class="form-check-input" type="checkbox" id="restaurant" value="option2">
+						<label class="form-check-label" for="restaurant">Restaurants</label>
+					</div>
+					<!-- id DATE PICKER #datePicker -->
+					<button type="submit" class="btn btn-primary btn-lg btn-block" id="btnStart">Lets Get Started!</button>
+				</form>
+      </div>
+    </div>
+  </div>
+</div>
+	</main>
 	<footer></footer>
-	<script src="./assets/js/bootstrap.min.js"></script>
+	<script src="./assets/js/bootstrap.js"></script>
 	<script src="./assets/js/js.js"></script>
 </body>
 </html>
