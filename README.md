@@ -1,5 +1,5 @@
 # Plan Your Evening - Team-Beards - Group Project 1
-  User will be able to find an event near them. Then find restaurants and bars that are within walking distance.
+### User will be able to find an event near them. Then find restaurants and bars that are within walking distance.
 ---
 ## Group Members:
   Alex Butler
@@ -14,7 +14,7 @@
   [Walk Score:] (https://www.walkscore.com/professional/api.php)
 ---
 ## Breakdown of Tasks
-###HTML Framework & CSS
+### HTML Framework & CSS
 Kevin
 1. Find events / show old searches
 2. List of Events
@@ -33,7 +33,5 @@ Modal Event
   Get Event Location
   Find Events Nearby
   Locate Activities Nearby
-###
-###
 
 
