@@ -1,4 +1,8 @@
-# Team-Beards - Group Project 1
+# March Madness - Team-Beards - Group Project 1
 
 
-# Group Members -
+## Group Members:
+	Alex Butler
+	Joe Calderon
+	John Stuart
+	Kevin Smith
