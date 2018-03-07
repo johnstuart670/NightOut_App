@@ -11,7 +11,14 @@
   [Google Locations:] (https://developers.google.com/places/)
       API Key: AIzaSyCuqtmYRp2PRxve9eVhJ3u1D1Ohxr5V81Y
 
+Google Places-
+
   [Walk Score:] (https://www.walkscore.com/professional/api.php)
+
+Eventful-
+
+BootStrap DatePicker-
+
 ---
 ## Breakdown of Tasks
 ### HTML Framework & CSS
