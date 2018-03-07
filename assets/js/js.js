@@ -12,3 +12,14 @@
 $('#sandbox-container .input-group.date').datepicker({
 });
 // end calender
+
+// google api key AIzaSyCo1RTMVe5ajgFclRK2kCqc99xyBZ9gOLg
+
+// $(document).on('click', ".btn-primary", placesAutocomplete)
+// function placesAutocomplete () {
+var input = document.getElementById('test');
+var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+google.maps.event.addListener(autocomplete, 'place_changed', function(){
+	 var place = autocomplete.getPlace();
+})
+// }
