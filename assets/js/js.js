@@ -17,7 +17,9 @@ $('#sandbox-container .input-group.date').datepicker({
 var eventLoc;
 var datePicker;
 
-var modalTital = $('#modalTitle')
+var modalTital = $('#modalTitle');
+
+var displayEvents =$('#displayEvents');
 
 
 // on load of the document
@@ -40,21 +42,42 @@ event.preventDefault();
 		sort_order: "popularity",
 }
 	EVDB.API.call("/events/search", oArgs, function(oData){
-		var eventArr = oData.events.event;
-		for (var i = 0; i < eventArr.length; i++){
+		var eventArray = oData.events.event;
+		console.log(oData);
+		for (var i = 0; i < eventArray.length; i++){
+var eventArr = eventArray[i];
+			var tdO = "<td>";
+			var tdC	= "</td>";
+// create an image
 			var image = eventArr.image.medium;
-			var artist = eventArr.performers.performer[0].name;
-			var shortBio = eventArr.performers.performer[0].short_bio;
-			var startTime = eventArr.startTime;
+			console.log(image);
+			// give it attributes of an src and width
+			var tdImage = $('<img>');
+			tdImage.attr("src", image.url).attr("width",image.width).attr("height", image.height).addClass('img-fluid');
+			var imageTD = tdO + tdImage + tdC;
+
+			var artist =(tdO + eventArr.performers.performer[0].name + tdC);
+			var shortBio = (tdO + eventArr.performers.performer[0].short_bio+ tdC);
+			var startTime = (tdO + eventArr.startTime+ tdC);
+			var venue = (tdO + eventArr.venue_name+ tdC);
+
 			var url = eventArr.url;
-			var venue = eventArr.venue_name;
+			var tdURL = tdO + '<a href = "'+ url + '>Buy Tickets Here</a>' + tdC;
 			// hold as data attributes
 			var longitude = eventArr.longitude;
 			var latitude = evenetArr.latitude;
-
+// make a new row
 			var newRow = $('<tr>');
-
-newRow.addClass([i]).data("data-lat", latitude).data("data-long", longitude).append()
+			// do stuff to the newRow
+newRow
+// append with TDs that we built 
+.append(imageTD, artist, shortBio, startTime, venue, tdURL)
+// add a class of i so we reference specific row
+.addClass([i])
+// give data attributes of lat and long to reference in the second API call later
+.data("data-lat", latitude)
+.data("data-long", longitude)
+// append displayEvents with the new Row
 			displayEvents.append(newRow);
 			
 		}
