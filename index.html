@@ -5,9 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="./assets/css/bootstrap.css">
+	<link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<script src="./assets/js/jquery-3.3.1.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	
 	<title>Plan Your Night Out</title>
 </head>
@@ -18,7 +20,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#startPop">
   Launch demo modal
 </button>
-
+<!-- Container 1 -->
 <!-- Modal -->
 <div class="modal fade" id="startPop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -35,13 +37,27 @@
 						</div>
 						<input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="location">
 					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="bar" value="option1">
-						<label class="form-check-label" for="bar">Bars</label>
+					<p></p>
+					<div class="input-group date" data-provide="datepicker">
+							<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-plus"></i></span>
+								</div>
+						<input type="text" class="form-control"><span class="input-group-addon "></span>
 					</div>
+					<p></p>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" id="bar" value="bar">
+						<label class="form-check-label" for="bar">Bars Nearby</label>
+					</div>
+					<p></p>
 					<div class="form-check form-check-inline" align="center">
-						<input class="form-check-input" type="checkbox" id="restaurant" value="option2">
-						<label class="form-check-label" for="restaurant">Restaurants</label>
+						<input class="form-check-input" type="checkbox" id="restaurant" value="restaurant">
+						<label class="form-check-label" for="restaurant">Restaurants Nearby</label>
+					</div>
+					<p></p>
+					<div class="form-check form-check-inline" align="center">
+						<input class="form-check-input" type="checkbox" id="ride" value="lyft">
+						<label class="form-check-label" for="restaurant">Need A Ride?</label>
 					</div>
 					<!-- id DATE PICKER #datePicker -->
 					<button type="submit" class="btn btn-primary btn-lg btn-block" id="btnStart">Lets Get Started!</button>
@@ -50,9 +66,30 @@
     </div>
   </div>
 </div>
-	</main>
+<!-- /container1 -->
+<p></p>
+<div class="container">
+<div class="d-flex bd-highlight mb-3">
+	<div class="p-2 bd-highlight">Flex item</div>
+	<div class="align-self-center p-2 bd-highlight">Aligned flex item</div>
+	<div class="p-2 bd-highlight">Flex item</div>
+</div>
+</div>
+<!-- container2 -->
+<div class="container" id="eventDump"></div>
+<!-- container2 -->
+
+<!-- container3 -->
+<!-- container3 -->
+
+<!-- container4 -->
+<!-- container4 -->
+
+
+</main>
 	<footer></footer>
 	<script src="./assets/js/bootstrap.js"></script>
+	<script src="./assets/js/bootstrap-datepicker.js"></script>
 	<script src="./assets/js/js.js"></script>
 </body>
 </html>

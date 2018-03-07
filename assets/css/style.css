@@ -1,6 +1,9 @@
 html{
 	font-family: 'Roboto', sans-serif;
 }
+p{
+	color:white;
+}
 body{
 	background-image: url("../images/nightlight.jpg");
 	background-repeat: no-repeat;
@@ -11,4 +14,13 @@ body{
 .form-check-input{
 	width: 30px;
 	height: 20px;
+}
+.modal-header{
+	justify-content: center;
+}
+aside{
+	width: 100%;
+}
+.container-fluid{
+	width: 100%;
 }
