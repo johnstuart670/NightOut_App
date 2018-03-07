@@ -1,9 +1,7 @@
 html{
 	font-family: 'Roboto', sans-serif;
 }
-p{
-	color:white;
-}
+
 body{
 	background-image: url("../images/nightlight.jpg");
 	background-repeat: no-repeat;
@@ -24,4 +22,7 @@ aside{
 .container-fluid{
 	width: 80%;
 	margin: auto;
+}
+.container{
+	background-color: whitesmoke;
 }
