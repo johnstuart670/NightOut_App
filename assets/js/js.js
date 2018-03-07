@@ -55,7 +55,7 @@ var eventArr = eventArray[i];
 			var tdImage = $('<img>');
 			tdImage.attr("src", image.url).attr("width",image.width).attr("height", image.height).addClass('img-fluid');
 			var imageTD = tdO + tdImage + tdC;
-
+// works until 58
 			var artist =(tdO + eventArr.performers.performer[0].name + tdC);
 			var shortBio = (tdO + eventArr.performers.performer[0].short_bio+ tdC);
 			var startTime = (tdO + eventArr.startTime+ tdC);
