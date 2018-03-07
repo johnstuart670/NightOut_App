@@ -12,3 +12,11 @@
 $('#sandbox-container .input-group.date').datepicker({
 });
 // end calender
+
+// AutoComplete - Joe
+var input = $('#location')[0];
+var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+google.maps.event.addListener(autocomplete, 'place_changed', function(){
+	 var place = autocomplete.getPlace();
+})
+// End AutoComplete ADD
