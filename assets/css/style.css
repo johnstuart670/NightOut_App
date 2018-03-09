@@ -27,7 +27,11 @@ aside{
 	background-color: whitesmoke;
 }
 
+
 #map {
 	height: 300px;
 	width: 100%;
+.startBox{
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
