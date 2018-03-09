@@ -1,3 +1,46 @@
+//create email and password firebase
+firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+//sign in to with email and password firebase
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+//user sign out 
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
+//get current user
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    // No user is signed in.
+  }
+});
+//or
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
+if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                   // this value to authenticate with your backend server, if
+									 // you have one. Use User.getToken() instead.
+}
+
+
 ////// ID's from html////////
 // #startBox = row that hold The original input fields
 // #location = location input search bar
@@ -37,7 +80,6 @@ function addMarker (place){
 // }
 
 // End AutoComplete ADD
-
 
 
 // globally scoped variables
@@ -144,6 +186,27 @@ $(document).ready(function () {
 
 	});
 
+
+	// Sets a listener on a radio button to change the filter type on Places
+	// Autocomplete.
+	function setupClickListener(id, types) {
+		var radioButton = document.getElementById(id);
+		radioButton.addEventListener('click', function() {
+			autocomplete.setTypes(types);
+		});
+	}
+
+	setupClickListener('changetype-all', []);
+	setupClickListener('changetype-address', ['address']);
+	setupClickListener('changetype-establishment', ['establishment']);
+	setupClickListener('changetype-geocode', ['geocode']);
+
+	document.getElementById('use-strict-bounds').addEventListener('click', function() {
+				console.log('Checkbox clicked! New state=' + this.checked);
+				autocomplete.setOptions({strictBounds: this.checked});
+			});
+		};
+	
 	// end of the page function
 });
 
