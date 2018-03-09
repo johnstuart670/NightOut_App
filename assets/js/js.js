@@ -1,5 +1,5 @@
 ////// ID's from html////////
-// #modalTital = tital for initial modal window
+// #startBox = row that hold The original input fields
 // #location = location input search bar
 // #bar = checkbox for bars
 // #restaurant = checkbox for restaurants
