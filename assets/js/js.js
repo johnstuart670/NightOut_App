@@ -22,4 +22,22 @@ var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)'
 google.maps.event.addListener(autocomplete, 'place_changed', function(){
 	 var place = autocomplete.getPlace();
 })
+
+function getMap () {
+	var options = {
+		zoom: 8,
+		center: place
+	}
+	var map = new google.maps.Map(document.getElementById('location'), options);
+}
+
+function addMarker (place){
+	var marker = new google.maps.Marker({
+		position: place,
+		map: map,
+		icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+	})
+}
+
 // }
+

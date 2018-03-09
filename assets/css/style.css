@@ -26,3 +26,8 @@ aside{
 .container{
 	background-color: whitesmoke;
 }
+
+#map {
+	height: 300px;
+	width: 100%;
+}
