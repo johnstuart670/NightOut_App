@@ -1,3 +1,28 @@
 html{
 	font-family: 'Roboto', sans-serif;
 }
+
+body{
+	background-image: url("../images/nightlight.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.form-check-input{
+	width: 30px;
+	height: 20px;
+}
+.modal-header{
+	justify-content: center;
+}
+aside{
+	width: 100%;
+}
+.container-fluid{
+	width: 80%;
+	margin: auto;
+}
+.container{
+	background-color: whitesmoke;
+}
