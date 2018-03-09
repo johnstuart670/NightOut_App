@@ -13,6 +13,15 @@ $('#sandbox-container .input-group.date').datepicker({
 });
 // end calender
 
+// AutoComplete - Joe
+var input = $('#location')[0];
+var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+google.maps.event.addListener(autocomplete, 'place_changed', function(){
+	 var place = autocomplete.getPlace();
+})
+// End AutoComplete ADD
+
+
 
 // globally scoped variables
 var eventLoc;
@@ -23,20 +32,23 @@ var modalTital = $('#modalTitle');
 var displayEvents = $('#eventDump');
 
 // variables to add to our card
-var card = $('div').addClass('card');
-var cardBody = $('div').addClass("card-body");
-var cardTitle = $('<h5>').addClass('card-title');
-var cardFooter = $("<div>").addClass("card-footer");
 
-var p9 = $('<p>').addClass('col-md-9');
-var newRow = $('<div>').addClass("row")
 
 // on load of the document
 $(document).ready(function () {
+
 	// add event listener to the btnStart
 	$('#btnStart').on("click", function () {
 		// keep it from submitting blank
 		event.preventDefault();
+
+		var card = $('<div>').addClass('card');
+		var cardBody = $('<div>').addClass("card-body");
+		var cardTitle = $('<h5>').addClass('card-title');
+		var cardFooter = $("<div>").addClass("card-footer");
+		
+		var p9 = $('<p>').addClass('col-md-9');
+		var newRow = $('<div>').addClass("row")
 		// save the information in future variables
 		eventLoc = $('#location').val();
 		datePicker = $('#datePicker').val();
@@ -106,10 +118,10 @@ $(document).ready(function () {
 					// add a class of i so we reference specific card
 					.attr("data-number", [i])
 					// give data attributes of lat and long to reference in the second API call later
-					.attr("data-lat", latitude)
-					.attr("data-long", longitude);
+					.attr("data-lat", eventArr.latitude)
+					.attr("data-long", eventArr.longitude);
 				// append displayEvents with the new Row
-				displayEvents.append(newRow);
+				displayEvents.append(card);
 			}
 		})
 
@@ -117,11 +129,4 @@ $(document).ready(function () {
 
 	// end of the page function
 });
-// AutoComplete - Joe
-var input = $('#location')[0];
-var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
-google.maps.event.addListener(autocomplete, 'place_changed', function(){
-	 var place = autocomplete.getPlace();
-})
-// End AutoComplete ADD
 
