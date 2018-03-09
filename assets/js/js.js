@@ -30,7 +30,6 @@ var cardFooter = $("<div>").addClass("card-footer");
 var p9 = $('<p>').addClass('col-md-9');
 var newRow = $('<div>').addClass("row")
 
-
 // on load of the document
 $(document).ready(function () {
 	// add event listener to the btnStart
