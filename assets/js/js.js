@@ -70,7 +70,6 @@ $(document).ready(function () {
 				} else {
 					artist = cardTitle.text(eventArr.title);
 				}
-
 				// building items in the row
 				// create an image
 				var image;
@@ -107,8 +106,8 @@ $(document).ready(function () {
 					// add a class of i so we reference specific card
 					.attr("data-number", [i])
 					// give data attributes of lat and long to reference in the second API call later
-					.data("data-lat", latitude)
-					.data("data-long", longitude)
+					.attr("data-lat", latitude)
+					.attr("data-long", longitude);
 				// append displayEvents with the new Row
 				displayEvents.append(newRow);
 			}
