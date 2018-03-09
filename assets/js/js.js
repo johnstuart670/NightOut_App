@@ -38,6 +38,7 @@ if (user != null) {
   uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                    // this value to authenticate with your backend server, if
 									 // you have one. Use User.getToken() instead.
+}
 
 
 //get specific user information
@@ -82,7 +83,7 @@ function initMap() {
 	var autocomplete = new google.maps.places.Autocomplete(input);
 
 	// Bind the map's bounds (viewport) property to the autocomplete object,
-	// so that the autocomplete requests use the current map bounds for the
+	// so that the autocomplete requests use thgie current map bounds for the
 	// bounds option in the request.
 	autocomplete.bindTo('bounds', map);
 
@@ -144,9 +145,10 @@ function initMap() {
 	setupClickListener('changetype-establishment', ['establishment']);
 	setupClickListener('changetype-geocode', ['geocode']);
 
-	document.getElementById('use-strict-bounds')
-			.addEventListener('click', function() {
+	document.getElementById('use-strict-bounds').addEventListener('click', function() {
 				console.log('Checkbox clicked! New state=' + this.checked);
 				autocomplete.setOptions({strictBounds: this.checked});
 			});
-}
+		};
+	
+
