@@ -188,7 +188,7 @@ if (isClass){
 
 			var selectEvent = $('<button>')
 			.html("Select this event!")
-			.addClass("selectEvent btn danger-color-dark btn-lg btn-block");
+			.addClass("selectEvent btn success-color-dark btn-lg btn-block");
 				// Build the footer out
 				var url = eventArr.url;
 				var aLink = $('<a>')

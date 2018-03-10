@@ -73,6 +73,18 @@ aside{
 	overflow-y:auto;
 	height: 317px;
 }
+.textwrite{
+	text-align: center;
+	color: white;
+}
+.wrap{
+	animation: caret .3s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
 @media screen and (max-width: 980px) {	
 	.container-fluid {
 		width: 100%;
