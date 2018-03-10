@@ -48,6 +48,7 @@ aside{
 	display:flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	border-radius: 5px;
 }
 .card.event{
 	display:flex;
