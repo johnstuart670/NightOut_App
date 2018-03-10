@@ -118,9 +118,7 @@ $('#eventDump').empty();
 				$('#eventDump').append(card);
 			};
 		});
-
 	});
-
 	// end of the page function
 });
 
