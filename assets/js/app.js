@@ -41,7 +41,7 @@ $(document).ready(function () {
 	$('#btnStart').on("click", function () {
 		// keep it from submitting blank
 		event.preventDefault();
-
+$('#eventDump').empty();
 		// save the information in future variables
 		eventLoc = $('#location').val();
 		datePicker = $('#datePicker').val();
@@ -50,20 +50,18 @@ $(document).ready(function () {
 			app_key: "dvq7JdvxVKZGZhLq",
 			where: eventLoc,
 			"date": datePicker,
-			page_size: 10,
+			page_size: 12,
 			sort_order: "popularity",
 		}
 		EVDB.API.call("/events/search", oArgs, function (oData) {
 			var eventArray = oData.events.event;
-			console.log(oData);
-			for (var i = 0; i < 10; i++) {
-				var card = $('<div>').addClass('card');
+			for (var i = 0; i < 12; i++) {
+				var card = $('<div>').addClass('card event');
 				var cardBody = $('<div>').addClass('card-body');
 				var cardFooter = $('<div>').addClass('card-footer');
 				var cardTitle = $('<h5>').addClass("card-title");
 				var eventArr = eventArray[i];
-				var newRow = $('<div>').addClass("row");
-				console.log("eventArr placement", eventArr);
+;
 				// making the card header
 				// shortcut variable
 				var performers = eventArr.performers;
@@ -80,6 +78,7 @@ $(document).ready(function () {
 					artist = cardTitle.text(eventArr.title);
 				}
 				// building items in the row
+				var newRow = $('<div>').addClass("row")
 				// create an image
 				var image;
 				var tdImage = $('<p>').text("No Image Available");
@@ -93,12 +92,16 @@ $(document).ready(function () {
 						.attr("height", image.height)
 						.addClass('img-fluid');
 				};
+				console.log("image", image)
 				// Log the Start Time in a p class
-				var startTime = $('<p>').text(eventArr.startTime);
-				// log the venue name in a p class
-				var venue = $('<p>').text(eventArr.venue_name);
-				// Build a row from the row items of image start time and venue name
-				newRow.append(image, startTime, venue);
+				var startTime = $('<p>').html(eventArr.startTime);
+				// console.log("Start time", startTime);
+				// // log the venue name in a p class
+				var venue = $('<p>').html(eventArr.venue_name);
+				// // Build a row from the row items of image start time and venue name
+				// newRow.append(image)
+				// 			.append(startTime).append(venue);
+				// 			console.log("newRow", newRow);
 
 				// Build the footer out
 				var url = eventArr.url;
@@ -106,8 +109,7 @@ $(document).ready(function () {
 				var tdURL = cardFooter.html(aLink);
 
 				// build the body of the card
-				cardBody.append(cardTitle, newRow, tdURL);
-				console.log("Line 114 cardBody append")
+				cardBody.append(cardTitle, tdImage, startTime, venue, tdURL);
 				// append the card with the body and
 				card.html(cardBody)
 					// add a class of i so we reference specific card
@@ -117,7 +119,6 @@ $(document).ready(function () {
 					.attr("data-long", eventArr.longitude);
 				// append displayEvents with the new Row
 				$('#eventDump').append(card);
-				console.log("i am a butt");
 			};
 		});
 
