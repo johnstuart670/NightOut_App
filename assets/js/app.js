@@ -115,12 +115,25 @@ var displayEvents = $('#eventDump');
 
 // on load of the document
 $(document).ready(function () {
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	 })
+	 // Tooltips Initialization
+	 $(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	 })
 
+	var isClass = false;
 	// add event listener to the btnStart
 	$('#btnStart').on("click", function () {
 		// keep it from submitting blank
 		event.preventDefault();
 $('#eventDump').empty();
+if (isClass){
+	$('#eventDump').removeClass(smallEvents)
+	isClass = false;
+}
+$('#formID').reset()[0];
 		var card = $('<div>').addClass('card');
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
@@ -168,7 +181,7 @@ $('#eventDump').empty();
 				var newRow = $('<div>').addClass("row")
 				// create an image
 				var image;
-				var tdImage = $('<p>').text("No Image Available");
+				var tdImage = $('<img>').attr('src', './assets/images/placeholder.png');
 				// if the image exists
 				if (eventArr.image) {
 					image = eventArr.image.medium;
@@ -185,14 +198,19 @@ $('#eventDump').empty();
 				// console.log("Start time", startTime);
 				// // log the venue name in a p class
 				var venue = $('<p>').html(eventArr.venue_name);
-			
+			var selectEvent = $('<button>')
+			.text("Select this event!")
+			.addClass("selectEvent");
 				// Build the footer out
 				var url = eventArr.url;
-				var aLink = $('<a>').attr("href", url).text("Learn More Here!");
+				var aLink = $('<a>')
+				.attr("href", url)
+				.attr("parent", "blank")
+				.text("Learn More Here!");
 				var tdURL = cardFooter.html(aLink);
 
 				// build the body of the card
-				cardBody.append(cardTitle, tdImage, venue, tdURL);
+				cardBody.append(cardTitle, tdImage, venue, selectEvent, tdURL);
 				// append the card with the body and
 				card.html(cardBody)
 					// add a class of i so we reference specific card
@@ -207,4 +225,6 @@ $('#eventDump').empty();
 	});
 	// end of the page function
 });
+
+
 
