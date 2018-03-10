@@ -55,6 +55,7 @@ $('#eventDump').empty();
 		}
 		EVDB.API.call("/events/search", oArgs, function (oData) {
 			var eventArray = oData.events.event;
+			console.log(eventArray);
 			for (var i = 0; i < 12; i++) {
 				var card = $('<div>').addClass('card event');
 				var cardBody = $('<div>').addClass('card-body');
@@ -92,24 +93,20 @@ $('#eventDump').empty();
 						.attr("height", image.height)
 						.addClass('img-fluid');
 				};
-				console.log("image", image)
 				// Log the Start Time in a p class
-				var startTime = $('<p>').html(eventArr.startTime);
+				// var startingTime = moment(eventArr.start_time, "hh:mm A")
+				// var startTime = $('<p>').html(startingTime);
 				// console.log("Start time", startTime);
 				// // log the venue name in a p class
 				var venue = $('<p>').html(eventArr.venue_name);
-				// // Build a row from the row items of image start time and venue name
-				// newRow.append(image)
-				// 			.append(startTime).append(venue);
-				// 			console.log("newRow", newRow);
-
+			
 				// Build the footer out
 				var url = eventArr.url;
 				var aLink = $('<a>').attr("href", url).text("Learn More Here!");
 				var tdURL = cardFooter.html(aLink);
 
 				// build the body of the card
-				cardBody.append(cardTitle, tdImage, startTime, venue, tdURL);
+				cardBody.append(cardTitle, tdImage, venue, tdURL);
 				// append the card with the body and
 				card.html(cardBody)
 					// add a class of i so we reference specific card
