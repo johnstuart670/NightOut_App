@@ -100,16 +100,29 @@ var displayEvents = $('#eventDump');
 
 // on load of the document
 $(document).ready(function () {
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	 })
+	 // Tooltips Initialization
+	 $(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	 })
 
+	var isClass = false;
 	// add event listener to the btnStart
 	$('#btnStart').on("click", function () {
 		// keep it from submitting blank
 		event.preventDefault();
-		$('#eventDump').empty();
+
+$('#eventDump').empty();
+if (isClass){
+	$('#eventDump').removeClass(smallEvents)
+	isClass = false;
+}
+
 		var card = $('<div>').addClass('card');
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
-		var cardFooter = $("<div>").addClass("card-footer");
 
 		var p9 = $('<p>').addClass('col-md-9');
 		var newRow = $('<div>').addClass("row")
@@ -128,9 +141,11 @@ $(document).ready(function () {
 			var eventArray = oData.events.event;
 			console.log(eventArray);
 			for (var i = 0; i < 12; i++) {
-				var card = $('<div>').addClass('card event');
+				var card = $('<div>').addClass('card event animated pulse');
 				var cardBody = $('<div>').addClass('card-body');
-				var cardFooter = $('<div>').addClass('card-footer');
+				var cardFooter = $('<button>')
+				.addClass('btn primary-color btn-lg btn-block')
+				.text("Learn More About This Event");
 				var cardTitle = $('<h5>').addClass("card-title");
 				var eventArr = eventArray[i];
 				;
@@ -153,7 +168,7 @@ $(document).ready(function () {
 				var newRow = $('<div>').addClass("row")
 				// create an image
 				var image;
-				var tdImage = $('<p>').text("No Image Available");
+				var tdImage = $('<img>').attr('src', './assets/images/placeholder.png').addClass("img-fluid");
 				// if the image exists
 				if (eventArr.image) {
 					image = eventArr.image.medium;
@@ -171,13 +186,19 @@ $(document).ready(function () {
 				// // log the venue name in a p class
 				var venue = $('<p>').html(eventArr.venue_name);
 
+			var selectEvent = $('<button>')
+			.html("Select this event!")
+			.addClass("selectEvent btn danger-color-dark btn-lg btn-block");
 				// Build the footer out
 				var url = eventArr.url;
-				var aLink = $('<a>').attr("href", url).text("Learn More Here!");
+				var aLink = $('<a>')
+				.attr("href", url)
+				.attr("parent", "blank")
+				.text("Learn More Here!");
 				var tdURL = cardFooter.html(aLink);
 
 				// build the body of the card
-				cardBody.append(cardTitle, tdImage, venue, tdURL);
+				cardBody.append(cardTitle, tdImage, venue, selectEvent, tdURL);
 				// append the card with the body and
 				card.html(cardBody)
 					// add a class of i so we reference specific card
@@ -189,6 +210,7 @@ $(document).ready(function () {
 				$('#eventDump').append(card);
 			};
 		});
+		$('#formID').reset()[0];
 	});
 
 	$(document).on("click", ".selectEvent", function () {
@@ -201,4 +223,6 @@ $(document).ready(function () {
 
 	// end of the page function
 });
+
+
 
