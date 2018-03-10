@@ -138,7 +138,7 @@ if (isClass){
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
 
-		var p9 = $('<p>').addClass('col-md-9');
+		// var p9 = $('<p>').addClass('col-md-9');
 		var newRow = $('<div>').addClass("row")
 		// save the information in future variables
 		eventLoc = $('#location').val();
