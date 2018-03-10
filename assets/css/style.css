@@ -49,6 +49,10 @@ aside{
 	justify-content: center;
 	flex-wrap: wrap;
 	border-radius: 5px;
+	background: rgba(200, 54, 54, 0);
+}
+.card-title{
+	font-weight: bold;
 }
 .card.event{
 	display:flex;
