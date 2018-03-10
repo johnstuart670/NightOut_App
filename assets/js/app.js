@@ -137,7 +137,6 @@ if (isClass){
 		var card = $('<div>').addClass('card');
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
-		var cardFooter = $("<div>").addClass("card-footer");
 
 		var p9 = $('<p>').addClass('col-md-9');
 		var newRow = $('<div>').addClass("row")
@@ -158,7 +157,9 @@ if (isClass){
 			for (var i = 0; i < 12; i++) {
 				var card = $('<div>').addClass('card event animated pulse');
 				var cardBody = $('<div>').addClass('card-body');
-				var cardFooter = $('<div>').addClass('card-footer');
+				var cardFooter = $('<button>')
+				.addClass('btn primary-color btn-lg btn-block')
+				.text("Learn More About This Event");
 				var cardTitle = $('<h5>').addClass("card-title");
 				var eventArr = eventArray[i];
 ;
@@ -181,7 +182,7 @@ if (isClass){
 				var newRow = $('<div>').addClass("row")
 				// create an image
 				var image;
-				var tdImage = $('<img>').attr('src', './assets/images/placeholder.png');
+				var tdImage = $('<img>').attr('src', './assets/images/placeholder.png').addClass("img-fluid");
 				// if the image exists
 				if (eventArr.image) {
 					image = eventArr.image.medium;
@@ -199,8 +200,8 @@ if (isClass){
 				// // log the venue name in a p class
 				var venue = $('<p>').html(eventArr.venue_name);
 			var selectEvent = $('<button>')
-			.text("Select this event!")
-			.addClass("selectEvent");
+			.html("Select this event!")
+			.addClass("selectEvent btn danger-color-dark btn-lg btn-block");
 				// Build the footer out
 				var url = eventArr.url;
 				var aLink = $('<a>')
