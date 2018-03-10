@@ -223,6 +223,11 @@ if (isClass){
 
 	// end of the page function
 });
+$('#resetBtn').on('click', function(){
+	location.reload();
+});
+
+
 
 
 
