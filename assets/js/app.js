@@ -133,7 +133,7 @@ if (isClass){
 	$('#eventDump').removeClass(smallEvents)
 	isClass = false;
 }
-
+$('#formID').reset()[0];
 		var card = $('<div>').addClass('card');
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
@@ -203,7 +203,10 @@ if (isClass){
 			.addClass("selectEvent");
 				// Build the footer out
 				var url = eventArr.url;
-				var aLink = $('<a>').attr("href", url).text("Learn More Here!");
+				var aLink = $('<a>')
+				.attr("href", url)
+				.attr("parent", "blank")
+				.text("Learn More Here!");
 				var tdURL = cardFooter.html(aLink);
 
 				// build the body of the card
