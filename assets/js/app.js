@@ -133,7 +133,7 @@ if (isClass){
 	$('#eventDump').removeClass(smallEvents)
 	isClass = false;
 }
-$('#formID').reset()[0];
+
 		var card = $('<div>').addClass('card');
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
@@ -156,7 +156,7 @@ $('#formID').reset()[0];
 			var eventArray = oData.events.event;
 			console.log(eventArray);
 			for (var i = 0; i < 12; i++) {
-				var card = $('<div>').addClass('card event');
+				var card = $('<div>').addClass('card event animated pulse');
 				var cardBody = $('<div>').addClass('card-body');
 				var cardFooter = $('<div>').addClass('card-footer');
 				var cardTitle = $('<h5>').addClass("card-title");
@@ -222,6 +222,7 @@ $('#formID').reset()[0];
 				$('#eventDump').append(card);
 			};
 		});
+		$('#formID').reset()[0];
 	});
 	// end of the page function
 });
