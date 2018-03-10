@@ -41,9 +41,10 @@ aside{
 .stickyBtn{
 	position: fixed;
 	bottom: 25px;
-	right: 100px;
+	right: 25px;
 }
 #eventDump {
+	margin-top: 20px;
 	display:flex;
 	justify-content: center;
 	flex-wrap: wrap;
