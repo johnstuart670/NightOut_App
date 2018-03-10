@@ -30,3 +30,8 @@ aside{
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
+.stickyBtn{
+	position: fixed;
+	bottom: 25px;
+	right: 100px;
+}
