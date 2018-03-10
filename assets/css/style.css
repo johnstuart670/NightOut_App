@@ -43,3 +43,17 @@ aside{
 	bottom: 25px;
 	right: 100px;
 }
+#eventDump {
+	display:flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.card.event{
+	display:flex;
+	justify-content: center;
+	margin:10px;
+	width: 31%;
+}
+.card-body {
+	text-align: center;
+}
