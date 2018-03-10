@@ -106,12 +106,7 @@ function initMap() {
 var eventLoc;
 var datePicker;
 
-var modalTital = $('#modalTitle');
-
-var displayEvents = $('#eventDump');
-
-// variables to add to our card
-
+// initialized the moment.js
 
 // on load of the document
 $(document).ready(function () {
@@ -138,7 +133,6 @@ if (isClass){
 		var cardBody = $('<div>').addClass("card-body");
 		var cardTitle = $('<h5>').addClass('card-title');
 
-		var p9 = $('<p>').addClass('col-md-9');
 		var newRow = $('<div>').addClass("row")
 		// save the information in future variables
 		eventLoc = $('#location').val();
@@ -194,24 +188,23 @@ if (isClass){
 						.addClass('img-fluid');
 				};
 				// Log the Start Time in a p class
-				// var startingTime = moment(eventArr.start_time, "hh:mm A")
-				// var startTime = $('<p>').html(startingTime);
-				// console.log("Start time", startTime);
+				var startingTime = moment(eventArr.start_time).format("dddd, MMMM Do YYYY, h:mm a");
+				var startTime = $('<p>').html(startingTime);
 				// // log the venue name in a p class
 				var venue = $('<p>').html(eventArr.venue_name);
 			var selectEvent = $('<button>')
 			.html("Select this event!")
-			.addClass("selectEvent btn danger-color-dark btn-lg btn-block");
+			.addClass("selectEvent btn success-color-dark btn-lg btn-block");
 				// Build the footer out
 				var url = eventArr.url;
 				var aLink = $('<a>')
 				.attr("href", url)
-				.attr("parent", "blank")
+				.attr("target", "_blank")
 				.text("Learn More Here!");
 				var tdURL = cardFooter.html(aLink);
 
 				// build the body of the card
-				cardBody.append(cardTitle, tdImage, venue, selectEvent, tdURL);
+				cardBody.append(cardTitle, tdImage, venue, startTime, selectEvent, tdURL);
 				// append the card with the body and
 				card.html(cardBody)
 					// add a class of i so we reference specific card
@@ -223,7 +216,7 @@ if (isClass){
 				$('#eventDump').append(card);
 			};
 		});
-		$('#formID').reset()[0];
+		// put in a reset function
 	});
 	// end of the page function
 });
