@@ -57,3 +57,8 @@ aside{
 .card-body {
 	text-align: center;
 }
+
+.smallEvents {
+	overflow-y:auto;
+	height: 317px;
+}
