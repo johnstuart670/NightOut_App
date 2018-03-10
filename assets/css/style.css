@@ -38,6 +38,11 @@ aside{
 	margin-bottom: 25px;
 }
 
+.stickyBtn{
+	position: fixed;
+	bottom: 25px;
+	right: 100px;
+}
 #eventDump {
 	display:flex;
 	justify-content: center;
