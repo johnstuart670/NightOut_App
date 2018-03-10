@@ -1,7 +1,9 @@
 html{
 	font-family: 'Roboto', sans-serif;
 }
-
+a{
+	color: white;
+}
 body{
 	background-image: url("../images/nightlight.jpg");
 	background-repeat: no-repeat;
