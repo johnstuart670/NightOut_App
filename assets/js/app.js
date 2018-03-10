@@ -15,9 +15,9 @@ $('#sandbox-container .input-group.date').datepicker({
 
 // AutoComplete - Joe
 var input = $('#location')[0];
-var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
-google.maps.event.addListener(autocomplete, 'place_changed', function(){
-	 var place = autocomplete.getPlace();
+var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
+	var place = autocomplete.getPlace();
 })
 // End AutoComplete ADD
 
@@ -42,13 +42,6 @@ $(document).ready(function () {
 		// keep it from submitting blank
 		event.preventDefault();
 
-		var card = $('<div>').addClass('card');
-		var cardBody = $('<div>').addClass("card-body");
-		var cardTitle = $('<h5>').addClass('card-title');
-		var cardFooter = $("<div>").addClass("card-footer");
-		
-		var p9 = $('<p>').addClass('col-md-9');
-		var newRow = $('<div>').addClass("row")
 		// save the information in future variables
 		eventLoc = $('#location').val();
 		datePicker = $('#datePicker').val();
@@ -63,8 +56,14 @@ $(document).ready(function () {
 		EVDB.API.call("/events/search", oArgs, function (oData) {
 			var eventArray = oData.events.event;
 			console.log(oData);
-			for (var i = 0; i < eventArray.length; i++) {
+			for (var i = 0; i < 10; i++) {
+				var card = $('<div>').addClass('card');
+				var cardBody = $('<div>').addClass('card-body');
+				var cardFooter = $('<div>').addClass('card-footer');
+				var cardTitle = $('<h5>').addClass("card-title");
 				var eventArr = eventArray[i];
+				var newRow = $('<div>').addClass("row");
+				console.log("eventArr placement", eventArr);
 				// making the card header
 				// shortcut variable
 				var performers = eventArr.performers;
@@ -87,20 +86,17 @@ $(document).ready(function () {
 				// if the image exists
 				if (eventArr.image) {
 					image = eventArr.image.medium;
-					console.log(image);
 					// give it attributes of an src and width
-					 tdImage = $('<img>')
+					tdImage = $('<img>')
 						.attr("src", image.url)
 						.attr("width", image.width)
 						.attr("height", image.height)
 						.addClass('img-fluid');
 				};
 				// Log the Start Time in a p class
-				var startTime = p9.text(eventArr.startTime);
+				var startTime = $('<p>').text(eventArr.startTime);
 				// log the venue name in a p class
-				var venue = p9.text(eventArr.venue_name);
-				console.log("venue name", eventArr.venue_name);
-
+				var venue = $('<p>').text(eventArr.venue_name);
 				// Build a row from the row items of image start time and venue name
 				newRow.append(image, startTime, venue);
 
@@ -111,17 +107,19 @@ $(document).ready(function () {
 
 				// build the body of the card
 				cardBody.append(cardTitle, newRow, tdURL);
+				console.log("Line 114 cardBody append")
 				// append the card with the body and
-				card.append(cardBody)
+				card.html(cardBody)
 					// add a class of i so we reference specific card
 					.attr("data-number", [i])
 					// give data attributes of lat and long to reference in the second API call later
 					.attr("data-lat", eventArr.latitude)
 					.attr("data-long", eventArr.longitude);
 				// append displayEvents with the new Row
-				displayEvents.append(card);
-			}
-		})
+				$('#eventDump').append(card);
+				console.log("i am a butt");
+			};
+		});
 
 	});
 
