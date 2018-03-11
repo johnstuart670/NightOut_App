@@ -116,30 +116,30 @@ function emptyForm() {
 	$('#datePicker').val('');
 }
 // function to scroll through the page cleanly based on 2 passed variables for where we want to go and how long
-function scrollToFunction(destination, runTime){
+function scrollToFunction(destination, runTime) {
 	// take the page location and store in variable
 	var startingY = window.pageYOffset;
 	// variable that compares where we are on the page to where we were
 	var diff = destination - startingY;
 	var start;
 	window.requestAnimationFrame(function step(timestamp) {
-    if (!start) start = timestamp;
-    // Elapsed milliseconds since start of scrolling.
-    var time = timestamp - start;
-    // Get percent of completion in range [0, 1].
-    var percent = Math.min(time / runTime, 1);
-// scroll to the point in the widnow
-    window.scrollTo(0, startingY + diff * percent);
-    // Proceed with animation as long as we wanted it to.
-    if (time < runTime) {
-      window.requestAnimationFrame(step);
-    }
-  })
+		if (!start) start = timestamp;
+		// Elapsed milliseconds since start of scrolling.
+		var time = timestamp - start;
+		// Get percent of completion in range [0, 1].
+		var percent = Math.min(time / runTime, 1);
+		// scroll to the point in the widnow
+		window.scrollTo(0, startingY + diff * percent);
+		// Proceed with animation as long as we wanted it to.
+		if (time < runTime) {
+			window.requestAnimationFrame(step);
+		}
+	})
 }
 
 function cardFactoryEvents(event) {
 	// scroll to point of top of div
-scrollToFunction(400, 500);
+	scrollToFunction(400, 500);
 	// variables to put data on the page
 	var card = $('<div>').addClass('card event animated pulse');
 	var cardBody = $('<div>').addClass('card-body');
@@ -185,7 +185,10 @@ scrollToFunction(400, 500);
 	// make a new button
 	var selectEvent = $('<button>')
 		.html("Select this event!")
-		.addClass("selectEvent btn success-color-dark btn-lg btn-block");
+		.addClass("selectEvent btn success-color-dark btn-lg btn-block")
+		// give data attributes of lat and long to reference in the second API call later
+		.attr("data-lat", event.latitude)
+		.attr("data-long", event.longitude);
 	// Build the footer out
 	var url = event.url;
 	var aLink = $('<a>')
@@ -198,9 +201,6 @@ scrollToFunction(400, 500);
 	cardBody.append(cardTitle, tdImage, venue, startTime, selectEvent, tdURL);
 	// append the card with the body and
 	card.html(cardBody)
-		// give data attributes of lat and long to reference in the second API call later
-		.attr("data-lat", event.latitude)
-		.attr("data-long", event.longitude);
 	// append the right area with the new card
 	$('#eventDump').append(card);
 };
@@ -268,11 +268,11 @@ $(document).ready(function () {
 			}
 		});
 	});
-// on click of the resetBtn
-$('#resetBtn').click(function(){
-	emptyForm();
-	scrollToFunction(0, 500);
-});
+	// on click of the resetBtn
+	$('#resetBtn').click(function () {
+		emptyForm();
+		scrollToFunction(0, 500);
+	});
 	// end of the page function
 });
 
