@@ -120,7 +120,7 @@ function emptyForm(){
 	$('#datePicker').val('');
 }
 
-function cardFactory(event){
+function cardFactoryEvents(event){
 	var card = $('<div>').addClass('card event animated pulse');
 				var cardBody = $('<div>').addClass('card-body');
 				var cardFooter = $('<button>')
@@ -215,7 +215,7 @@ $(document).ready(function () {
 			var eventArray = oData.events.event;
 			console.log(eventArray);
 			for (var i = 0; i < 12; i++) {
-				cardFactory(eventArray[i]);
+				cardFactoryEvents(eventArray[i]);
 			};
 		});
 	});
