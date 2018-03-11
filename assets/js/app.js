@@ -13,15 +13,25 @@ $('#sandbox-container .input-group.date').datepicker({
 });
 // end calender
 
+// AutoComplete - Joe
+var input = $('#location')[0];
+var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
+	var place = autocomplete.getPlace();
+})
+// End AutoComplete ADD
+
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('mapDump'), {
 		center: { lat: 40.7608, lng: -111.8910 },
 		zoom: 13
 	});
-
+	var card = document.getElementById('pac-card');
 	var input = document.getElementById('location');
 	var bar = document.getElementById('bar');
-	var restaurant = document.getElementById('restaurant');
+	var restaurants = document.getElementById('restaurant');
+	var strictBounds = document.getElementById('strict-bounds-selector');
+
 
 	var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -33,7 +43,6 @@ function initMap() {
 	var infowindow = new google.maps.InfoWindow();
 	var infowindowContent = document.getElementById('infowindow-content');
 	infowindow.setContent(infowindowContent);
-
 	var marker = new google.maps.Marker({
 		map: map,
 		anchorPoint: new google.maps.Point(0, -29)
@@ -78,7 +87,7 @@ function initMap() {
 	// Sets a listener on a radio button to change the filter type on Places
 	// Autocomplete.
 	function setupClickListener(id, types) {
-		var checkbox = document.getElementById();
+		var checkbox = document.getElementById(id);
 		checkbox.addEventListener('click', function () {
 			autocomplete.setTypes(types);
 		});
@@ -87,8 +96,11 @@ function initMap() {
 	setupClickListener('changetype-bar', ['bar']);
 	setupClickListener('changetype-restaurant', ['restaurant']);
 
-
-	// 	});
+	document.getElementById('use-strict-bounds')
+		.addEventListener('click', function () {
+			console.log('Checkbox clicked! New state=' + this.checked);
+			autocomplete.setOptions({ strictBounds: this.checked });
+		});
 }
 // globally scoped variables
 var eventLoc;
@@ -207,24 +219,8 @@ $(document).ready(function () {
 			};
 		});
 	});
-
-	$(document).on("click", ".selectEvent", function () {
-		var longitude = $(this).parent().attr("data-long");
-		var latitude = $(this).parent().attr("data-lat");
-		console.log(longitude, latitude);
-
-	})
-
-
 	// end of the page function
 });
-//reset button
-$('#resetBtn').on('click', function(){
-	location.reload();
-});
-// end reset button
-
-
 
 
 
