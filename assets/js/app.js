@@ -210,6 +210,15 @@ $(document).ready(function () {
 	// end calender
 	// add event listener to the btnStart
 	$('#btnStart').on("click", function () {
+		// check box listener for api call
+		if ($('#bar').prop('checked')){
+			barCheck()
+		};
+		if ($('#restaurant').prop('checked')){
+			restaurantCheck()
+		};
+		// end checkbox listener
+		// data validation for lacation and datepicker
 		var valiDate = $('#datePicker').val();
 		var valiLocate = $('#location').val();
 		if (valiLocate === '') {
@@ -252,6 +261,17 @@ $(document).ready(function () {
 
 
 	});
+// Check Box Functions
+function barCheck(){
+	console.log('bar')
+}
+
+function restaurantCheck(){
+	console.log('restaurant')
+}
+
+// End Checkbox Functions
+
 	// on click of the resetBtn
 	$('#resetBtn').click(function () {
 		emptyForm();
