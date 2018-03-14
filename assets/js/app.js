@@ -16,15 +16,43 @@ function activatePlacesSearch() {
 // End AutoComplete ADD
 
 var map;
+function apiBar(event, j) {
+	var longitude = event.attr("data-long");
+	var latitude = event.attr("data-lat");
+	console.log(longitude, latitude);
+	var lat = parseFloat(latitude);
+	var lng = parseFloat(longitude);
+	// Create the map
+	var startLoc = { lat, lng };
+	map = new google.maps.Map(document.getElementById('mapDump'), {
+		center: startLoc,
+		zoom: 17
+	});
 
-
-$(document).on("click", ".selectEvent", function () {
-	loadingGif($('#placeDump'));
-	$('#eventDump').addClass('smallEvents');
-	// scroll us to the location
-	scrollToFunction(700, 1000)
-	var longitude = $(this).attr("data-long");
-	var latitude = $(this).attr("data-lat");
+	//Create the places service
+	var service = new google.maps.places.PlacesService(map);
+	var searchResults;
+	// Perform a nearby search
+	service.nearbySearch(
+		{ location: startLoc, radius: 1500, type: ['bar'] },
+		function (results, status, pagination) {
+			if (status !== 'OK') return;
+			searchResults = results;
+			// console.log(searchResults);	
+			for (var i = 0; i < j; i++) {
+				if (i < j) {
+					cardFactoryPlaces(searchResults[i]);
+				} else {
+					cardFactoryPlaces(searchResults[i])
+					$('.loadingGif').remove();
+				}
+			}
+		})
+};
+function apiRestaurant(event, j) {
+	var longitude = event.attr("data-long");
+	var latitude = event.attr("data-lat");
+	console.log(longitude, latitude);
 	var lat = parseFloat(latitude);
 	var lng = parseFloat(longitude);
 	// Create the map
@@ -44,8 +72,9 @@ $(document).on("click", ".selectEvent", function () {
 			if (status !== 'OK') return;
 			searchResults = results;
 			// console.log(searchResults);	
-			for (var i = 0; i < 12; i++) {
-				if (i < 11) {
+
+			for (var i = 0; i < j; i++) {
+				if (i < j) {
 					cardFactoryPlaces(searchResults[i]);
 				} else {
 					cardFactoryPlaces(searchResults[i])
@@ -53,12 +82,30 @@ $(document).on("click", ".selectEvent", function () {
 				}
 			}
 		})
+};
+
+$(document).on("click", ".selectEvent", function () {
+	$('#mapDump').show();
+	loadingGif($('#placeDump'));
+	$('#eventDump').addClass('smallEvents');
+	// scroll us to the location
+	scrollToFunction(700, 1000)
+if (barCheck && restCheck){
+	apiBar($(this), 6);
+	apiRestaurant($(this), 6)
+}else if (barCheck) {
+	apiBar($(this), 12)
+}else  {
+	apiRestaurant($(this), 12)
+}
 });
 
 // globally scoped variables
 var eventLoc;
 var datePicker;
 var isClass = false;
+var barCheck = false;
+var restCheck = false;
 
 function emptyForm() {
 	$('#location').val('');
@@ -157,12 +204,12 @@ function cardFactoryEvents(event) {
 var loadGifDiv = $('<div>')
 	.addClass("loadingGif")
 	.html(
-	$('<div>')
-		.html(
-		$('<img>')
-			.attr('src', './assets/images/loading.gif')
-			.addClass('whiteBG')
-		));
+		$('<div>')
+			.html(
+				$('<img>')
+					.attr('src', './assets/images/loading.gif')
+					.addClass('whiteBG')
+			));
 // build out the places
 function cardFactoryPlaces(event) {
 	console.log("event", event)
@@ -198,6 +245,7 @@ function loadingGif(div) {
 }
 // on load of the document
 $(document).ready(function () {
+	$('#mapDump').hide();
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
@@ -211,48 +259,72 @@ $(document).ready(function () {
 	// end calender
 	// add event listener to the btnStart
 	$('#btnStart').on("click", function () {
-		// keep it from submitting blank
-		event.preventDefault();
-		// add a loading gif
-		$('#eventDump').empty();
-		loadingGif($('#eventDump'));
-		// save the information from the form in variables
-		eventLoc = $('#location').val();
-		datePicker = $('#datePicker').val();
-		// item for running the API call
-		var oArgs = {
-			app_key: "dvq7JdvxVKZGZhLq",
-			where: eventLoc,
-			"date": datePicker,
-			page_size: 12,
-			sort_order: "popularity",
-		}
-		// the API call
-		EVDB.API.call("/events/search", oArgs, function (oData) {
-			// shortcut variable
-			var eventArray = oData.events.event;
-			console.log(eventArray);
-			// run a for loop to get 12 objects on the page
-			for (var i = 0; i < 12; i++) {
-				if (i < 11) {
-					// run the cardFactoryEvents function on eventArray at each iteration
-					cardFactoryEvents(eventArray[i]);
-					// on the last iteration remove the loadingGif
-				} else {
-					cardFactoryEvents(eventArray[i])
-					$('.loadingGif').remove();
-				}
+		// check box listener for api call
+		if ($('#bar').prop('checked')) {
+			barCheck = true;
+		};
+		if ($('#restaurant').prop('checked')) {
+			restCheck = true;
+		};
+		// end checkbox listener
+		// data validation for lacation and datepicker
+		var valiDate = $('#datePicker').val();
+		var valiLocate = $('#location').val();
+		if (valiLocate === '') {
+		} else if (valiDate === '') {
+		} else {
+			// keep it from submitting blank
+			event.preventDefault();
+			// add a loading gif
+			$('#eventDump').empty();
+			loadingGif($('#eventDump'));
+			// save the information from the form in variables
+			eventLoc = $('#location').val();
+			datePicker = $('#datePicker').val();
+			// item for running the API call
+			var oArgs = {
+				app_key: "dvq7JdvxVKZGZhLq",
+				where: eventLoc,
+				"date": datePicker,
+				page_size: 12,
+				sort_order: "popularity",
 			}
-		});
+			// the API call
+			EVDB.API.call("/events/search", oArgs, function (oData) {
+				// shortcut variable
+				var eventArray = oData.events.event;
+				console.log(eventArray);
+				// run a for loop to get 12 objects on the page
+				for (var i = 0; i < 12; i++) {
+					if (i < 11) {
+						// run the cardFactoryEvents function on eventArray at each iteration
+						cardFactoryEvents(eventArray[i]);
+						// on the last iteration remove the loadingGif
+					} else {
+						cardFactoryEvents(eventArray[i])
+						$('.loadingGif').remove();
+					}
+				}
+			});
+		}
+		
 
 	});
-	// on click of the resetBtn
-	$('#resetBtn').click(function () {
-		emptyForm();
-		scrollToFunction(0, 500);
+	// Check Box Functions
+	
+
+		// End Checkbox Functions
+
+		// on click of the resetBtn
+		$('#resetBtn').click(function () {
+			emptyForm();
+			scrollToFunction(0, 500);
+			$('#eventDump').html('<a name="events"></a>')
+			$('#placeDump').html('');
+			$('#mapDump').hide();
+		});
+		// end of the page function
 	});
-	// end of the page function
-});
 
 
 
