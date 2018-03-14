@@ -37,9 +37,9 @@
 					<div class="card-body">
 
 						<!-- Form -->
-						<form name="">
+						<form>
 							<!-- Heading -->
-<!-- typewriter text -->
+							<!-- typewriter text -->
 							<div class="textwrite">
 								<h2 class="dark-grey-text text-center">
 									<p class="typewrite" data-period="500" data-type='[ "Want To See A Show?", "Let&#8217s Grab A Drink", "Let&#8217s Go Out!" ]'>
@@ -47,9 +47,9 @@
 									</p>
 								</h2>
 							</div>
-<!-- end typewriter -->
+							<!-- end typewriter -->
 							<hr>
-
+							<!-- location picker -->
 							<div class="input-group input-group-lg" id="formID">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroup-sizing-lg">Location</span>
@@ -58,6 +58,7 @@
 								 required>
 							</div>
 							<p></p>
+							<!-- datepicker -->
 							<div class="input-group date" data-provide="datepicker">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -68,17 +69,20 @@
 								<span class="input-group-addon "></span>
 							</div>
 							<p></p>
+							<!-- bar chkbxk -->
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="checkbox" id="bar" value="bar">
 								<label class="form-check-label" for="bar">Bars Nearby</label>
 							</div>
 							<p></p>
+							<!-- resauraunt chkbx -->
 							<div class="form-check form-check-inline" align="center">
 								<input class="form-check-input" type="checkbox" id="restaurant" value="restaurant">
 								<label class="form-check-label" for="restaurant">Restaurants Nearby</label>
 							</div>
 
 					</div>
+					<!-- startsubmit btn -->
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary btn-lg btn-block " id="btnStart">Lets Get Started!</button>
 					</div>
@@ -92,15 +96,15 @@
 			<!--/.Card panel with event locations-->
 
 			<!-- /container1 -->
+			<!-- eventdump -->
 			<div class="container" id="eventDump">
 				<a name="events"></a>
 			</div>
-			<!-- end locations cards -->
+			<!-- end locations eventdump -->
 			<!--/.Panel-->
 
-			<!-- where the map goes -->
+			<!-- map container -->
 			<div class="container rounded" id="mapDump">
-
 				<!-- end map container -->
 			</div>
 			<!-- end map panel -->
@@ -110,11 +114,11 @@
 			<div class="card-body">
 				<h3>Things To Do!</h3>
 			</div>
+			<!-- end crapdump heading -->
 		</div>
-		<!-- Holds all api place data for reseraunts/bars -->
+		<!-- placedump - Holds all api place data for reseraunts/bars -->
 		<div class="container rounded" id="placeDump">
-
-		<!-- end placeDump -->
+			<!-- end placeDump -->
 		</div>
 
 		<!-- end container fluid -->
