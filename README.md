@@ -2,9 +2,9 @@
 ### User will be able to find an event near them. Then find restaurants and bars that are within walking distance.
 ---
 #### Group Members:
-  Alex Butler
-
-  Joe Calderon
+	Alex Butler
+  
+	Joe Calderon
   
 	John Stuart
   
