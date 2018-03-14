@@ -45,7 +45,8 @@ aside{
 	bottom: 25px;
 	right: 25px;
 }
-#eventDump {
+#eventDump,
+#placeDump {
 	margin-top: 20px;
 	display:flex;
 	justify-content: center;

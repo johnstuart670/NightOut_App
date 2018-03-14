@@ -19,15 +19,16 @@ var map;
 
 
 $(document).on("click", ".selectEvent", function () {
+	loadingGif($('#placeDump'));
+	$('#eventDump').addClass('smallEvents');
+	// scroll us to the location
+	scrollToFunction(700, 1000)
 	var longitude = $(this).attr("data-long");
 	var latitude = $(this).attr("data-lat");
 	var lat = parseFloat(latitude);
 	var lng = parseFloat(longitude);
-	console.log(lat);
-	console.log(lng);
 	// Create the map
 	var startLoc = { lat, lng };
-	console.log(startLoc);
 	map = new google.maps.Map(document.getElementById('mapDump'), {
 		center: startLoc,
 		zoom: 17
@@ -35,46 +36,24 @@ $(document).on("click", ".selectEvent", function () {
 
 	//Create the places service
 	var service = new google.maps.places.PlacesService(map);
-
+	var searchResults;
 	// Perform a nearby search
 	service.nearbySearch(
 		{ location: startLoc, radius: 1500, type: ['restaurant'] },
 		function (results, status, pagination) {
 			if (status !== 'OK') return;
-			console.log(results);
-			createMarkers(results);
-
-		}
-	)
-	function createMarkers(places) {
-		var bounds = new google.maps.LatLngBounds();
-		var placesList = document.getElementById('placeDump');
-
-		for (var i = 0, place; place = place[i]; i++) {
-			var picture = {
-				url: place.icon,
-				size: new google.maps.Size(71, 71),
-				origin: new google.maps.Point(0, 0),
-				anchor: new google.maps.Point(17, 34),
-				scaledSize: new google.maps.Size(25, 25)
-			};
-
-			var marker = new google.maps.Marker({
-				map: map,
-				icon: image,
-				title: place, name,
-				position: place.geometry.location
-			});
-
-			var li = document.createElement('li');
-			li.textContent = place.name;
-			placesList.appendChild(li);
-
-			bounds.extend(place.geometry.location);
-		}
-		map.fitBounds(bounds);
-	}
-})
+			searchResults = results;
+			// console.log(searchResults);	
+			for (var i = 0; i < 12 ; i ++){
+				if (i <11){
+					cardFactoryPlaces(searchResults[i]);
+				}else{
+					cardFactoryPlaces(searchResults[i])
+					$('.loadingGif').remove();
+				}
+			}
+		})
+});
 
 // globally scoped variables
 var eventLoc;
@@ -187,12 +166,28 @@ function cardFactoryEvents(event) {
 var loadGifDiv = $('<div>')
 	.addClass("loadingGif")
 	.html(
-		$('<div>')
-			.html(
-				$('<img>')
-					.attr('src', './assets/images/loading.gif')
-					.addClass('whiteBG')
-			));
+	$('<div>')
+		.html(
+		$('<img>')
+			.attr('src', './assets/images/loading.gif')
+			.addClass('whiteBG')
+		));
+// build out the places
+function cardFactoryPlaces(event) {
+	// variables to put data on the page
+	var card = $('<div>').addClass('card event animated pulse');
+	var cardBody = $('<div>').addClass('card-body');
+	var cardTitle = $('<h5>').addClass("card-title");
+	// grab info from the api call on the iteration
+	cardTitle.text(event.name)
+	// var hoursOpen = $('<p>').text(event.opening_hours);
+	var rating = $('<p>').text("Rating: " + event.rating);
+	// append cardBody with the info we're looking at
+	cardBody.html(rating);
+
+	card.append(cardTitle, cardBody);
+	$('#placeDump').append(card);
+}
 
 // function to have a loading Gif
 function loadingGif(div) {
