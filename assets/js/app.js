@@ -72,6 +72,7 @@ function apiRestaurant(event, j) {
 			if (status !== 'OK') return;
 			searchResults = results;
 			// console.log(searchResults);	
+
 			for (var i = 0; i < j; i++) {
 				if (i < j) {
 					cardFactoryPlaces(searchResults[i]);
@@ -211,18 +212,30 @@ var loadGifDiv = $('<div>')
 			));
 // build out the places
 function cardFactoryPlaces(event) {
+	console.log("event", event)
 	// variables to put data on the page
 	var card = $('<div>').addClass('card event animated pulse');
 	var cardBody = $('<div>').addClass('card-body');
 	var cardTitle = $('<h5>').addClass("card-title");
+	var cardFooter = $('<button>')
+		.addClass('btn primary-color btn-lg btn-block')
+		.text("Learn More About This Event");
 	// grab info from the api call on the iteration
-	cardTitle.text(event.name)
-	// var hoursOpen = $('<p>').text(event.opening_hours);
+	cardTitle.html(event.name)
 	var rating = $('<p>').text("Rating: " + event.rating);
-	// append cardBody with the info we're looking at
-	cardBody.html(rating);
+	var searchButton = $('<button>')
+		.text("Learn More Here")
+		.addClass("btn primary-color btn-lg btn-block");
+	var cost = event.price_level;
+	var queryURL = $('<a>')
+		.attr("href", ("https://maps.google.com/?q=" + event.name))
+		.attr("target", "_blank")
+		.html(searchButton);
 
-	card.append(cardTitle, cardBody);
+	// append cardBody with the info we're looking at
+	cardBody.append(cardTitle, rating, queryURL);
+
+	card.append(cardBody);
 	$('#placeDump').append(card);
 }
 
