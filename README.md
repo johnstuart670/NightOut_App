@@ -2,10 +2,12 @@
 ### User will be able to find an event near them. Then find restaurants and bars that are within walking distance.
 ---
 #### Group Members:
-  Alex Butler,
+  Alex Butler
+	
   Joe Calderon,
-  John Stuart,
-  Kevin Smith
+	John Stuart,
+  
+		Kevin Smith
 ---
 ## APIs / Librarys Used
 	[Google Places:] (https://developers.google.com/places/)
