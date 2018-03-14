@@ -86,6 +86,7 @@ function apiRestaurant(event, j) {
 
 $(document).on("click", ".selectEvent", function () {
 	$('#mapDump').show();
+	$('#crapDump').show();
 	loadingGif($('#placeDump'));
 	$('#eventDump').addClass('smallEvents');
 	// scroll us to the location
@@ -246,6 +247,7 @@ function loadingGif(div) {
 // on load of the document
 $(document).ready(function () {
 	$('#mapDump').hide();
+	$('#crapDump').hide();
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
@@ -322,6 +324,7 @@ $(document).ready(function () {
 			$('#eventDump').html('<a name="events"></a>')
 			$('#placeDump').html('');
 			$('#mapDump').hide();
+			$('#crapDump').hide();
 		});
 		// end of the page function
 	});
