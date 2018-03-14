@@ -3,11 +3,12 @@
 ---
 #### Group Members:
   Alex Butler
-	
-  Joe Calderon,
-	John Stuart,
+
+  Joe Calderon
   
-		Kevin Smith
+	John Stuart
+  
+	Kevin Smith
 ---
 ## APIs / Librarys Used
 	[Google Places:] (https://developers.google.com/places/)
