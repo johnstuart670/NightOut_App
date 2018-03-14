@@ -13,8 +13,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 	<title>Plan Your Night Out</title>
 </head>
@@ -39,7 +39,7 @@
 						<!-- Form -->
 						<form name="">
 							<!-- Heading -->
-
+<!-- typewriter text -->
 							<div class="textwrite">
 								<h2 class="dark-grey-text text-center">
 									<p class="typewrite" data-period="500" data-type='[ "Want To See A Show?", "Let&#8217s Grab A Drink", "Let&#8217s Go Out!" ]'>
@@ -47,14 +47,15 @@
 									</p>
 								</h2>
 							</div>
-
+<!-- end typewriter -->
 							<hr>
 
 							<div class="input-group input-group-lg" id="formID">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroup-sizing-lg">Location</span>
 								</div>
-								<input type="text" class="form-control hoverable" autofocus aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="location" required>
+								<input type="text" class="form-control hoverable" autofocus aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="location"
+								 required>
 							</div>
 							<p></p>
 							<div class="input-group date" data-provide="datepicker">
@@ -88,31 +89,33 @@
 				</div>
 
 			</div>
-			<!--/.Card-->
+			<!--/.Card panel with event locations-->
 
 			<!-- /container1 -->
 			<div class="container" id="eventDump">
 				<a name="events"></a>
 			</div>
-			<!-- end card -->
+			<!-- end locations cards -->
 			<!--/.Panel-->
 
-			<!-- container2 -->
+			<!-- where the map goes -->
 			<div class="container rounded" id="mapDump">
 
-
+				<!-- end map container -->
 			</div>
+			<!-- end map panel -->
 		</div>
+		<!-- Heading to the reseraunt/bars -->
 		<div class="card" id="crapDump">
 			<div class="card-body">
-					<h3>Things To Do!</h3>
+				<h3>Things To Do!</h3>
 			</div>
-	</div>
-		<!-- container3 -->
+		</div>
+		<!-- Holds all api place data for reseraunts/bars -->
 		<div class="container rounded" id="placeDump">
 
+		<!-- end placeDump -->
 		</div>
-		<!-- end container3 -->
 
 		<!-- end container fluid -->
 	</div>
