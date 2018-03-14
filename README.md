@@ -8,12 +8,18 @@
   Kevin Smith
 ---
 ## APIs / Librarys Used
-  [Google Places:] (https://developers.google.com/places/)
-  [Google Maps:] (https://developers.google.com/maps)
-  [Eventful:] (http://api.eventful.com/)
-	[Moment.JS:] (https://momentjs.com/)
-	[Bootsrtap 4:] (https://getbootstrap.com/)
-	[MDBootstrap:] (https://mdbootstrap.com/)
-	[Bootstrap Date Picker:] (https://bootstrap-datepicker.readthedocs.io/en/latest/)
+	[Google Places:] (https://developers.google.com/places/)
 
+	[Google Maps:] (https://developers.google.com/maps)
+	
+	[Eventful:] (http://api.eventful.com/)
+
+	[Moment.JS:] (https://momentjs.com/)
+	
+	[Bootsrtap 4:] (https://getbootstrap.com/)
+	
+	[MDBootstrap:] (https://mdbootstrap.com/)
+	
+	[Bootstrap Date Picker:] (https://bootstrap-datepicker.readthedocs.io/en/latest/)
+---
 	View The App at https://brainchomer/github.io/Team-Beards
