@@ -200,6 +200,7 @@ function loadingGif(div) {
 }
 // on load of the document
 $(document).ready(function () {
+
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
@@ -213,39 +214,46 @@ $(document).ready(function () {
 	// end calender
 	// add event listener to the btnStart
 	$('#btnStart').on("click", function () {
-		// keep it from submitting blank
-		event.preventDefault();
-		// add a loading gif
-		$('#eventDump').empty();
-		loadingGif($('#eventDump'));
-		// save the information from the form in variables
-		eventLoc = $('#location').val();
-		datePicker = $('#datePicker').val();
-		// item for running the API call
-		var oArgs = {
-			app_key: "dvq7JdvxVKZGZhLq",
-			where: eventLoc,
-			"date": datePicker,
-			page_size: 12,
-			sort_order: "popularity",
-		}
-		// the API call
-		EVDB.API.call("/events/search", oArgs, function (oData) {
-			// shortcut variable
-			var eventArray = oData.events.event;
-			console.log(eventArray);
-			// run a for loop to get 12 objects on the page
-			for (var i = 0; i < 12; i++) {
-				if (i < 11) {
-					// run the cardFactoryEvents function on eventArray at each iteration
-					cardFactoryEvents(eventArray[i]);
-					// on the last iteration remove the loadingGif
-				} else {
-					cardFactoryEvents(eventArray[i])
-					$('.loadingGif').remove();
-				}
+		var valiDate = $('#datePicker').val();
+		var valiLocate = $('#location').val();
+		if (valiLocate === '') {
+		} else if (valiDate === '') {
+		} else {
+			// keep it from submitting blank
+			event.preventDefault();
+			// add a loading gif
+			$('#eventDump').empty();
+			loadingGif($('#eventDump'));
+			// save the information from the form in variables
+			eventLoc = $('#location').val();
+			datePicker = $('#datePicker').val();
+			// item for running the API call
+			var oArgs = {
+				app_key: "dvq7JdvxVKZGZhLq",
+				where: eventLoc,
+				"date": datePicker,
+				page_size: 12,
+				sort_order: "popularity",
 			}
-		});
+			// the API call
+			EVDB.API.call("/events/search", oArgs, function (oData) {
+				// shortcut variable
+				var eventArray = oData.events.event;
+				console.log(eventArray);
+				// run a for loop to get 12 objects on the page
+				for (var i = 0; i < 12; i++) {
+					if (i < 11) {
+						// run the cardFactoryEvents function on eventArray at each iteration
+						cardFactoryEvents(eventArray[i]);
+						// on the last iteration remove the loadingGif
+					} else {
+						cardFactoryEvents(eventArray[i])
+						$('.loadingGif').remove();
+					}
+				}
+			});
+		}
+
 
 	});
 	// on click of the resetBtn

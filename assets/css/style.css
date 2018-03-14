@@ -58,6 +58,7 @@ aside{
 }
 .mapDump{
 	margin: auto;
+	margin-top: 20px;
 }
 .card.event{
 	display:flex;
