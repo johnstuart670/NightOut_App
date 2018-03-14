@@ -1,7 +1,7 @@
 # Plan Your Evening - Team-Beards - Group Project 1
 ### User will be able to find an event near them. Then find restaurants and bars that are within walking distance.
 ---
-## Group Members:
+#### Group Members:
   Alex Butler,
   Joe Calderon,
   John Stuart,
@@ -15,3 +15,5 @@
 	[Bootsrtap 4:] (https://getbootstrap.com/)
 	[MDBootstrap:] (https://mdbootstrap.com/)
 	[Bootstrap Date Picker:] (https://bootstrap-datepicker.readthedocs.io/en/latest/)
+
+	View The App at https://brainchomer/github.io/Team-Beards
