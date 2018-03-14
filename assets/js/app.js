@@ -19,6 +19,7 @@ var map;
 
 
 $(document).on("click", ".selectEvent", function () {
+	$('#mapDump').show();
 	loadingGif($('#placeDump'));
 	$('#eventDump').addClass('smallEvents');
 	// scroll us to the location
@@ -195,7 +196,7 @@ function loadingGif(div) {
 }
 // on load of the document
 $(document).ready(function () {
-
+	$('#mapDump').hide();
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
@@ -256,6 +257,8 @@ $(document).ready(function () {
 		emptyForm();
 		scrollToFunction(0, 500);
 		$('#eventDump').html('<a name="events"></a>')
+		$('#placeDump').html('');
+		$('#mapDump').hide();
 	});
 	// end of the page function
 });
