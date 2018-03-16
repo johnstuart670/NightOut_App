@@ -19,7 +19,7 @@
 
 	[Moment.JS:] (https://momentjs.com/)
 	
-	[Bootsrtap 4:] (https://getbootstrap.com/)
+	[Bootstrap 4:] (https://getbootstrap.com/)
 	
 	[MDBootstrap:] (https://mdbootstrap.com/)
 	
