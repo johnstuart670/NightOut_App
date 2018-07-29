@@ -155,69 +155,71 @@ function cardFactoryEvents(event) {
 	// scroll to point of top of div
 	scrollToFunction(400, 500);
 	// variables to put data on the page
-	var c = new CardBase();
+	var NewCard = new CardBase();
+
+	const {card, cardTitle, tdImage, cardFooter, cardBody} = NewCard;
 	// making the card header
 	// shortcut variables
-	var performers = event.performers;
-	var artist;
+	const {performers, image, venue_name, latitude, longitude, start_time, url} = event
+	let artist;
 	// if there is a performers item
 	if (performers) {
 		// and if it is an array
 		if (Array.isArray(performers.performer)) {
 			// set variable artist to the first in the name
-			artist = c.cardTitle.text(performers.performer[0].name);
+			artist = cardTitle.text(performers.performer[0].name);
 			// if it's not an array, just use the performer name
-		} else { artist = c.cardTitle.text(performers.performer.name); }
+		} else { artist = cardTitle.text(performers.performer.name); }
 		// if it is blank, get the title of the event instead
 	} else {
-		artist = c.cardTitle.text(event.title);
+		artist = cardTitle.text(event.title);
 	}
 	// if the image exists on the call
-	if (event.image) {
+	if (image) {
 		// set the placeholder to have info from the call
-		var image = event.image.medium;
+		let PHimage = image.medium;
 		// Check if the url for the image contains http: and if not, add it to the front.
-		if (!image.url.includes('http')) 
-		{ image.url = "http:" + image.url; }
+		if (!PHimage.url.includes('http')) 
+		{ PHimage.url = "http:" + image.url; }
 		// update the src and sizing attributes to the image.
-		c.tdImage
-			.attr("src", image.url)
-			.attr("width", image.width)
-			.attr("height", image.height)
+		tdImage
+			.attr("src", PHimage.url)
+			.attr("width", PHimage.width)
+			.attr("height", PHimage.height)
 	};
 	// Log the Start Time in a p class after formatting with moment.js
 	var startTime = $('<p>')
 		.html(
-		moment(event.start_time).format("dddd, MMMM Do YYYY, h:mm a")
+		moment(start_time).format("dddd, MMMM Do YYYY, h:mm a")
 		);
 	// // log the venue name in a p class
-	var venue = $('<p>').html(event.venue_name);
+	var venue = $('<p>').html(venue_name);
 	// make a new button
 	var selectEvent = $('<button>')
 		.html("Select this event!")
 		.addClass("selectEvent btn success-color-dark btn-lg btn-block")
 		// give data attributes of lat and long to reference in the second API call later
-		.attr("data-lat", event.latitude)
-		.attr("data-long", event.longitude);
+		.attr("data-lat", latitude)
+		.attr("data-long", longitude);
 	// Build the footer out
 
-	c.cardFooter.html(
+	cardFooter.html(
 		$('<a>')
-			.attr("href", event.url)
+			.attr("href", url)
 			.attr("target", "_blank")
 			.text("Learn More Here!")
 	);
 
 	// append the right area with the new card
 	$('#eventDump').append(
-		c.card.html(
-			c.cardBody.append(
-				c.cardTitle, 
-				c.tdImage, 
+		card.html(
+			cardBody.append(
+				cardTitle, 
+				tdImage, 
 				venue, 
 				startTime, 
 				selectEvent, 
-				c.cardFooter
+				cardFooter
 			)));
 };
 // build our loadGif item as a Row with the loading.gif in it
@@ -233,17 +235,19 @@ var loadGifDiv = $('<div>')
 // build out the places
 function cardFactoryPlaces(event) {
 	// variables to put data on the page
-	var c = new CardBase();
+	var NewCard = new CardBase();
+	let {name, rating, price_level, vicinity} = event
+	let {cardTitle, cardFooter, card, cardBody} = NewCard
 	// grab info from the api call on the iteration
-	c.cardTitle.html(event.name)
-	var rating = $('<p>').text("Rating: " + event.rating);
+	cardTitle.html(name)
+	rating = $('<p>').text("Rating: " + rating);
 
 	var queryURL = $('<a>')
-		.attr("href", ("https://maps.google.com/?q=" + event.name))
+		.attr("href", ("https://maps.google.com/?q=" + name))
 		.attr("target", "_blank")
-		.html(c.cardFooter);
+		.html(cardFooter);
 	// get the cost as a number then check it to update the div
-	var cost = parseInt(event.price_level);
+	var cost = parseInt(price_level);
 	var printCost = $('<p>');
 
 	switch (cost) {
@@ -260,19 +264,19 @@ function cardFactoryPlaces(event) {
 			printCost.text('Cost Undefined');
 	}
 
-	var placeAddress = $('<p>').text(event.vicinity);
+	var placeAddress = $('<p>').text(vicinity);
 
 	$('#placeDump').append(
-	c.card
+	card
 	.append(
-		c.cardBody
+		cardBody
 		.append(
-			c.cardTitle, 
+			cardTitle, 
 			placeAddress, 
 			rating, 
 			printCost, 
 			queryURL, 
-			c.cardFooter
+			cardFooter
 		)));
 }
 
